@@ -76,3 +76,63 @@ window.onscroll = function () {
 
     showPage(currentPage); // Show the first page on load
   });
+
+/////////////////
+  //for help widget  JavaScript with Zendesk API Integration
+  document.addEventListener('DOMContentLoaded', () => {
+  const API_ENDPOINT = 'https://yourdomain.zendesk.com/api/v2/help_center/articles/search.json?query=';
+  const PROXY_URL = 'https://yourproxy.com/api'; // Required for CORS
+
+  const trigger = document.querySelector('.search-trigger');
+  const container = document.querySelector('.search-container');
+  const input = document.getElementById('helpdesk-search');
+  const results = document.querySelector('.search-results');
+  const loader = document.querySelector('.loading-indicator');
+
+  let searchTimeout;
+
+  // Toggle search interface
+  trigger.addEventListener('click', () => {
+    container.classList.toggle('hidden');
+    input.focus();
+  });
+
+  // API Search with debounce
+  input.addEventListener('input', (e) => {
+    clearTimeout(searchTimeout);
+    const query = e.target.value.trim();
+    
+    if (query.length < 3) {
+      results.innerHTML = '';
+      return;
+    }
+
+    loader.style.display = 'block';
+    results.innerHTML = '';
+
+    searchTimeout = setTimeout(async () => {
+      try {
+        const response = await fetch(`${PROXY_URL}?query=${encodeURIComponent(query)}`);
+        const data = await response.json();
+        displayResults(data.results);
+      } catch (error) {
+        results.innerHTML = '<div class="error">Error loading results</div>';
+      }
+      loader.style.display = 'none';
+    }, 500);
+  });
+
+  function displayResults(articles) {
+    results.innerHTML = articles.length ? 
+      articles.map(article => `
+        <div class="result-item">
+          <a href="${article.html_url}" target="_blank" rel="noopener">
+            ${article.title}
+          </a>
+        </div>
+      `).join('') : 
+      '<div class="no-results">No articles found</div>';
+  }
+});
+
+//

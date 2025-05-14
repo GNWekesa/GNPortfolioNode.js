@@ -90,6 +90,7 @@
   <div class="container position-relative" style="z-index: 1;">
     <div class="row align-items-center">
       <!-- Text Content -->
+       <!--col-md-6 means boostrap column-->
       <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
         <h1 class="display-4 fw-bold animate__animated animate__fadeInLeft" 
             style="font-family: 'Playfair Display', serif; font-size: 3rem; color: #001C6C;">
@@ -641,6 +642,10 @@
         <h3>JavaScript</h3>
       </div>
       <div class="skill-card">
+        <img src="images/node-js-svgrepo-com.svg" alt="Node.js">
+        <h3>Node.js</h3>
+      </div>
+      <div class="skill-card">
         <img src="images/tailwind-css-svgrepo-com.svg" alt="Tailwind CSS">
         <h3>Tailwind CSS</h3>
       </div>
@@ -885,91 +890,77 @@
 </div>
 <!-- End of Projects Carousel Section -->
 
-<!-- SIMPLE, TRY IF OTHER ONE FAILS 
+<!-- SIMPLE, TRY IF OTHER ONE FAILS Traditional form technique, it worked
 <form id="contactForm">
   <input type="text" name="name" placeholder="Name" required><br>
   <input type="email" name="email" placeholder="Email" required><br>
   <textarea name="message" placeholder="Message" required></textarea><br>
   <button type="submit">Send Message</button>
-</form>-->
-
-<!-- Add action and method attributes -->
-<form id="contactForm" action="/contact" method="POST">
-  <input type="text" name="name" placeholder="Name" required><br>
-  <input type="email" name="email" placeholder="Email" required><br>
-  <textarea name="message" placeholder="Message" required></textarea><br>
-  <button type="submit">Send Message</button>
 </form>
-  <!-- contact form STYLED 
-  <section id="contact" style="background-color: #F0F8FF; color: black;">
-    <div class="container">
-      <h1 class="section-title text-center mb-5 display-6 fw-bold" style="font-family: 'Playfair Display', serif;"></i>Contact Me</h1><br>
-      <p class="text-center text-muted mb-5">Get In Touch</p>
-      <div class="row g-5">
-       Contact Info 
-        <div class="col-md-4">
-          <div class="d-flex align-items-start mb-4">
-            <i class="bi bi-telephone-fill text-primary fs-3 me-3"></i>
-            <div>
-              <h5 class="fw-semibold mb-1">Call Me</h5>
-              <p class="text-muted mb-0">+254 785 687 846</p>
+-->
+
+
+<!-- how to make my styled contact form work with the Express server while maintaining its design
+Added name attributes to all form inputs (critical for data handling)
+it supports JavaScript submission handler, the JS is in this page before </body>-->
+ <section id="contact" style="background-color: #F0F8FF; color: black;">
+  <div class="container">
+    <h1 class="section-title text-center mb-5 display-6 fw-bold" style="font-family: 'Playfair Display', serif;">Contact Me</h1>
+    <br>
+    <p class="text-center text-muted mb-5">Get In Touch</p>
+    <div class="row g-5">
+      <!-- Contact Info -->
+      <div class="col-md-4">
+        <!-- ... (keep your contact info blocks the same) ... -->
+      </div>
+
+      <!-- Start of Contact Form -->
+      <div class="col-md-8">
+        <form id="contactForm">
+          <div class="row g-3">
+            <div class="col-md-6"> <!-- Added name attribute name="name" name="email" name="project"  name="message"  -->
+              <input type="text" 
+                     name="name"  
+                     class="form-control bg-light rounded-3 px-3 py-2" 
+                     placeholder="Enter your name" required 
+                     style="border: 2px solid #001C6C;">
+            </div>
+            <div class="col-md-6">
+              <input type="email" 
+                     name="email" 
+                     class="form-control bg-light rounded-3 px-3 py-2" 
+                     placeholder="Enter your email" required 
+                     style="border: 2px solid #001C6C;">
+            </div>
+            <div class="col-12">
+              <input type="text" 
+                     name="project" 
+                     class="form-control bg-light rounded-3 px-3 py-2" 
+                     placeholder="Enter your project" 
+                     style="border: 2px solid #001C6C;">
+            </div>
+            <div class="col-12">
+              <textarea rows="5" 
+                        name="message"  
+                        class="form-control bg-light rounded-3 px-3 py-2" 
+                        placeholder="Write your message" required 
+                        style="border: 2px solid #001C6C;"></textarea>
+            </div>
+            <div class="col-12 text-end">
+              <button type="submit" 
+                      class="btn rounded-3 px-4 py-2 d-inline-flex align-items-center"
+                      style="background-color: #001C6C; color: #fff;">
+                Send Message
+                <i class="bi bi-send ms-2"></i>
+              </button>
             </div>
           </div>
-          <div class="d-flex align-items-start mb-4">
-            <i class="bi bi-envelope-fill text-primary fs-3 me-3"></i>
-            <div>
-              <h5 class="fw-semibold mb-1">Email</h5>
-              <p class="text-muted mb-0">gabriellanekwek@gmail.com</p>
-            </div>
-          </div>
-          <div class="d-flex align-items-start">
-            <i class="bi bi-geo-alt-fill text-primary fs-3 me-3"></i>
-            <div>
-              <h5 class="fw-semibold mb-1">Location</h5>
-              <p class="text-muted mb-0">Nairobi, Kenya</p>
-            </div>
-          </div>
-        </div>
-         Contact Form 
-          <div class="col-md-8">
-            <form id="contactForm">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <input type="text" class="form-control bg-light rounded-3 px-3 py-2" 
-                        placeholder="Enter your name" required 
-                        style="border: 2px solid #001C6C;">
-                </div>
-                <div class="col-md-6">
-                  <input type="email" class="form-control bg-light rounded-3 px-3 py-2" 
-                        placeholder="Enter your email" required 
-                        style="border: 2px solid #001C6C;">
-                </div>
-                <div class="col-12">
-                  <input type="text" class="form-control bg-light rounded-3 px-3 py-2" 
-                        placeholder="Enter your project" 
-                        style="border: 2px solid #001C6C;">
-                </div>
-                <div class="col-12">
-                  <textarea rows="5" class="form-control bg-light rounded-3 px-3 py-2" 
-                            placeholder="Write your message" required 
-                            style="border: 2px solid #001C6C;"></textarea>
-                </div>
-                <div class="col-12 text-end">
-                  <button type="submit" 
-                    class="btn rounded-3 px-4 py-2 d-inline-flex align-items-center"
-                    style="background-color: #001C6C; color: #fff;">
-                    Send Message
-                    <i class="bi bi-send ms-2"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
-  </section>
--->
+  </div>
+</section>
+
 
 <!-- Footer -->
 <footer class="text-white pt-5 pb-4" style="background-color: #001C6C; width: 100%;">
@@ -1028,6 +1019,22 @@
       </div>
     </div>
 
+     <div class="col-md-4 mb-4">
+      <div class="helpdesk-widget">
+      <div class="header">
+        <h3>Support Center</h3>
+        <p>Have questions? We're here to assist you.</p>
+      </div>
+      <button class="search-trigger">Search Knowledge Base</button>
+      <div class="search-container hidden">
+        <input type="text" placeholder="Enter your question..." id="helpdesk-search">
+        <div class="search-results"></div>
+        <div class="loading-indicator">Searching...</div>
+      </div>
+      </div>
+     </div>
+
+        
     <!-- Bottom copyright -->
     <div class="text-center mt-4 pt-3 border-top">
       <p class="mb-0">&copy; 2025 Gabriella Nekesa Wekesa. All rights reserved.</p>
@@ -1046,7 +1053,7 @@
   <i class="fas fa-arrow-up scrollup__icon"></i>
 </a>
 
-  <!-- Flowbite JS to add carousel-->
+<!-- Flowbite JS to add carousel-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
 <!-- Bootstrap JS (with Popper) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -1058,33 +1065,36 @@
 </a>
 <!-- script below is for my form-->
 <script>
-document.getElementById("contactForm").addEventListener("submit", async function (e) {
-  e.preventDefault();
+  document.getElementById('contactForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      project: e.target.project.value,
+      message: e.target.message.value
+    };
 
-  const formData = {
-    name: this.name.value,
-    email: this.email.value,
-    message: this.message.value
-  };
+    try {
+      const response = await fetch('/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
 
-  try {
-    const res = await fetch("http://localhost:3000/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData)
-    });
-
-    const text = await res.text();
-    alert(text);
-    this.reset();
-  } catch (err) {
-    alert("Failed to send message");
-    console.error(err);
-  }
-});
+      if (response.ok) {
+        alert('Message sent successfully!');
+        e.target.reset();
+      } else {
+        alert('Error sending message');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Connection failed');
+    }
+  });
 </script>
 <!--01010100 01001000 01000101 00100000 01010100 01010010 01000001 01001110 01010011 01000110 01001111 01010010 01001101 01000101 01000100 00100000 00001010 01000111 01000001 01000010 01010010 01001001 01000101 01001100 01001100 01000001 00100000 01001110 01000101 01001011 01000101 01010011 01000001 00100000 01010111 01000101 01001011 01000101 01010011 01000001-->
-
 <!-- for my flipbook js-->
 <script src="script.js"></script>
 </body>

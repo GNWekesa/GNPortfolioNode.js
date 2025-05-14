@@ -39,8 +39,8 @@ db.connect((err) => {
 app.post('/contact', (req, res) => {
   const { name, email, message } = req.body;
 
-  const sql = 'INSERT INTO contact_form (name, email, message) VALUES (?, ?, ?)';
-  db.query(sql, [name, email, message], (err, result) => {
+  const sql = 'INSERT INTO contact_form (name, email, project, message) VALUES (?, ?, ?,?)';
+  db.query(sql, [name, email, project, message], (err, result) => {
     if (err) {
       console.error('Failed to insert data:', err);
       res.status(500).send('Error saving message');
